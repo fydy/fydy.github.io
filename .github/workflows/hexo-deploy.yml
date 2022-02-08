@@ -48,8 +48,8 @@ jobs:
           git commit -m "GitHub Actions Auto Builder at $(date +'%Y-%m-%d %H:%M:%S')"
           git checkout -b test
           git push --force --quiet "https://${{ secrets.HEXO_DEPLOY }}@$GITHUB_REPO" test:test
-          # git push --force --quiet "https://elaw:${{ secrets.CODING_TOKEN }}@$CODING_REPO" master:master
-          # git push --force --quiet "https://elaw:${{ secrets.GITEE_ACCESS_TOKEN }}@$GITEE_REPO" master:master
+#          git push --force --quiet "https://elaw:${{ secrets.CODING_TOKEN }}@$CODING_REPO" master:master
+#          git push --force --quiet "https://elaw:${{ secrets.GITEE_ACCESS_TOKEN }}@$GITEE_REPO" master:master
           
 #      - name: Build and Deploy
 #        uses: theme-keep/hexo-deploy-github-pages-action@master # 使用专门部署 Hexo 到 GitHub pages 的 action
