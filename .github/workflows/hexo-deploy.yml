@@ -45,7 +45,8 @@ jobs:
           pwd
           git config user.name "fydy"
           git config user.email "yuncme@foxmail.com"
-          cd /home/runner/work/fydy.github.io/fydy.github.io/public && git add . && git commit -m "GitHub Actions Auto Builder at $(date +'%Y-%m-%d %H:%M:%S')" && git checkout -b test && git push --force --quiet "https://${{ secrets.HEXO_DEPLOY }}@$GITHUB_REPO" test:test
+          cd /home/runner/work/fydy.github.io/fydy.github.io/public && ls
+          git add . && git commit -m "GitHub Actions Auto Builder at $(date +'%Y-%m-%d %H:%M:%S')" && git checkout -b test && git push --force --quiet "https://${{ secrets.HEXO_DEPLOY }}@$GITHUB_REPO" test:test
 #          git push --force --quiet "https://elaw:${{ secrets.CODING_TOKEN }}@$CODING_REPO" master:master
 #          git push --force --quiet "https://elaw:${{ secrets.GITEE_ACCESS_TOKEN }}@$GITEE_REPO" master:master
           
