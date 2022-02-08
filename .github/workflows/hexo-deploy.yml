@@ -30,6 +30,7 @@ jobs:
           npm i -g hexo-cli && npm i
           npm update hexo-theme-keep
           hexo generate
+          rm -rf .gitignore
 
       - name: Deploy hexo blog
         env: 
@@ -44,7 +45,7 @@ jobs:
           pwd
           git config user.name "fydy"
           git config user.email "yuncme@foxmail.com"
-          cd ./public && pwd && cd /home/runner/work/fydy.github.io/fydy.github.io/public
+          cd ./public
           git add .
           git commit -m "GitHub Actions Auto Builder at $(date +'%Y-%m-%d %H:%M:%S')"
           git checkout -b test
