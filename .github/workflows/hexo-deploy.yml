@@ -27,33 +27,31 @@ jobs:
       - name: Install hexo dependencies
         # 下载 hexo-cli 脚手架及相关安装包
         run: |
-          npm i -g hexo-cli && npm i
+          npm i -g hexo-cli && npm install
           npm update hexo-theme-keep
-          hexo generate
-          rm -rf .gitignore
 
-      - name: Deploy hexo blog
-        env: 
-          # Github 仓库
-          GITHUB_REPO: github.com/fydy/fydy.github.io
-          # Coding 仓库
-          # CODING_REPO: e.coding.net/elaw/blogs.git
-          # Gitee 仓库
-          # GITEE_REPO: gitee.com/elaw/elaw.gitee.io
-         # 将编译后的博客文件推送到指定仓库
-        run: |
-          pwd
-          git config user.name "fydy"
-          git config user.email "yuncme@foxmail.com"
-          cd /home/runner/work/fydy.github.io/fydy.github.io/public && ls
-          git add . && git commit -m "GitHub Actions Auto Builder at $(date +'%Y-%m-%d %H:%M:%S')" && git checkout -b test && git push --force --quiet "https://${{ secrets.HEXO_DEPLOY }}@$GITHUB_REPO" test:test
+#      - name: Deploy hexo blog
+#        env: 
+#          # Github 仓库
+#          GITHUB_REPO: github.com/fydy/fydy.github.io
+#          # Coding 仓库
+#          # CODING_REPO: e.coding.net/elaw/blogs.git
+#          # Gitee 仓库
+#          # GITEE_REPO: gitee.com/elaw/elaw.gitee.io
+#         # 将编译后的博客文件推送到指定仓库
+#        run: |
+#          pwd
+#          git config user.name "fydy"
+#          git config user.email "yuncme@foxmail.com"
+#          cd /home/runner/work/fydy.github.io/fydy.github.io/public && ls
+#          git add . && git commit -m "GitHub Actions Auto Builder at $(date +'%Y-%m-%d %H:%M:%S')" && git checkout -b test && git push --force --quiet "https://${{ secrets.HEXO_DEPLOY }}@$GITHUB_REPO" test:test
 #          git push --force --quiet "https://elaw:${{ secrets.CODING_TOKEN }}@$CODING_REPO" master:master
 #          git push --force --quiet "https://elaw:${{ secrets.GITEE_ACCESS_TOKEN }}@$GITEE_REPO" master:master
           
-#      - name: Build and Deploy
-#        uses: theme-keep/hexo-deploy-github-pages-action@master # 使用专门部署 Hexo 到 GitHub pages 的 action
-#        env:
-#          PERSONAL_TOKEN: ${{ secrets.HEXO_DEPLOY }} # secret 名
-#          PUBLISH_REPOSITORY: fydy/fydy.github.io # 公共仓库，格式：GitHub 用户名/仓库名
-#          BRANCH: test # 分支，填 gh-pages 就行
-#          PUBLISH_DIR: ./public # 部署 public 目录下的文件
+      - name: Build and Deploy
+        uses: theme-keep/hexo-deploy-github-pages-action@master # 使用专门部署 Hexo 到 GitHub pages 的 action
+        env:
+          PERSONAL_TOKEN: ${{ secrets.HEXO_DEPLOY }} # secret 名
+          PUBLISH_REPOSITORY: fydy/fydy.github.io # 公共仓库，格式：GitHub 用户名/仓库名
+          BRANCH: test # 分支，填 gh-pages 就行
+          PUBLISH_DIR: ./public # 部署 public 目录下的文件
