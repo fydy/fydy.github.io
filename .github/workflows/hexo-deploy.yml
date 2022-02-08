@@ -41,9 +41,10 @@ jobs:
           # GITEE_REPO: gitee.com/elaw/elaw.gitee.io
          # 将编译后的博客文件推送到指定仓库
         run: |
+          pwd
           git config user.name "fydy"
           git config user.email "yuncme@foxmail.com"
-          cd ./public
+          cd ./public && pwd && cd /home/runner/work/fydy.github.io/fydy.github.io/public
           git add .
           git commit -m "GitHub Actions Auto Builder at $(date +'%Y-%m-%d %H:%M:%S')"
           git checkout -b test
