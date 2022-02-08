@@ -13,10 +13,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@master
-      - name: Setup node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '16.x'
+#      - name: Setup node
+#        uses: actions/setup-node@v1
+#        with:
+#          node-version: '16.x'
 #      - name: Cache node modules
 #        # 设置包缓存目录，避免每次下载
 #        uses: actions/cache@v1
@@ -24,11 +24,11 @@ jobs:
 #          path: ~/.npm
 #          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
 
-      - name: Install hexo dependencies
-        # 下载 hexo-cli 脚手架及相关安装包
-        run: |
-          npm i -g hexo-cli && npm install
-          npm update hexo-theme-keep
+#      - name: Install hexo dependencies
+#        # 下载 hexo-cli 脚手架及相关安装包
+#        run: |
+#          npm i -g hexo-cli && npm install
+#          npm update hexo-theme-keep
 
 #      - name: Deploy hexo blog
 #        env: 
