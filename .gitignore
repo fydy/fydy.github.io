@@ -7,3 +7,4 @@ themes/Kratos-Rebirth/node_modules/
 node_modules/
 db.json
 hexo-action
+*.bak

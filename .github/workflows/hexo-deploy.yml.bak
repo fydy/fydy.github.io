@@ -47,20 +47,11 @@ jobs:
 #          git add . && git commit -m "GitHub Actions Auto Builder at $(date +'%Y-%m-%d %H:%M:%S')" && git checkout -b test && git push --force --quiet "https://${{ secrets.HEXO_DEPLOY }}@$GITHUB_REPO" test:test
 #          git push --force --quiet "https://elaw:${{ secrets.CODING_TOKEN }}@$CODING_REPO" master:master
 #          git push --force --quiet "https://elaw:${{ secrets.GITEE_ACCESS_TOKEN }}@$GITEE_REPO" master:master
-
-      - name: Upload to Github
-        run: |
-          git config user.name "fydy"
-          git config user.email "yuncme@foxmail.com"
-          git clone https://github.com/heowc/action-hexo.git && cd action-hexo && rm -rf .git && git init && git remote add origin https://github.com/fydy/action.git && git add . && git commit -m "first" && git checkout -b hexo-action && git push -u origin hexo-action -f
-          cd .. && git clone https://github.com/sma11black/hexo-action.git && cd hexo-action && rm -rf .git && git init && git remote add origin https://github.com/fydy/action.git && git add . && git commit -m "first" && git checkout -b hexo-action-v2 && git push -u origin hexo-action-v2 -f
-          cd .. && git clone https://github.com/peaceiris/actions-hugo.git && cd actions-hugo && rm -rf .git && git init && git remote add origin https://github.com/fydy/action.git && git add . && git commit -m "first" && git checkout -b hugo-action && git push -u origin hugo-action -f
-          cd .. && git clone -b hexo-action https://github.com/fydy/fydy.github.io.git && cd fydy.github.io && rm -rf .git && git init && git remote add origin https://github.com/fydy/action.git && git add . && git commit -m "first" && git checkout -b hexo-action-v3 && git push -u origin hexo-action-v3 -f
-          
-#      - name: Build and Deploy
-#        uses: fydy/fydy.github.io@hexo-action # 使用专门部署 Hexo 到 GitHub pages 的 action
-#        env:
-#          PERSONAL_TOKEN: ${{ secrets.HEXO_DEPLOY }} # secret 名，生成网址https://github.com/settings/tokens/new
-#          PUBLISH_REPOSITORY: fydy/fydy.github.io # 公共仓库，格式：GitHub 用户名/仓库名
-#          BRANCH: test # 部署分支
-#          PUBLISH_DIR: ./public # 部署 public 目录下的文件
+   
+      - name: Build and Deploy
+        uses: fydy/action@hexo-action-v3 # 使用专门部署 Hexo 到 GitHub pages 的 action
+        env:
+          PERSONAL_TOKEN: ${{ secrets.HEXO_DEPLOY }} # secret 名，生成网址https://github.com/settings/tokens/new
+          PUBLISH_REPOSITORY: fydy/fydy.github.io # 公共仓库，格式：GitHub 用户名/仓库名
+          BRANCH: test # 部署分支
+          PUBLISH_DIR: ./public # 部署 public 目录下的文件
