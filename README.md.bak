@@ -30,6 +30,9 @@ jobs:
 
         # The branch the action should deploy to.
         BRANCH: master
+		
+		# 部署 public 目录下的文件
+		PUBLISH_DIR: ./public
 ```
 
 if you want to make the workflow only triggers on push events to specific branches, you can like this: 

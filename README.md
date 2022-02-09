@@ -23,16 +23,10 @@ jobs:
     - name: Build and Deploy
       uses: fydy/fydy.github.io@hexo-action
       env:
-        PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-        # The repository the action should deploy to.
-        PUBLISH_REPOSITORY: fydy/fydy.github.io
-
-        # The branch the action should deploy to.
-        BRANCH: master
-		
-		# 部署 public 目录下的文件
-		PUBLISH_DIR: ./public
+        PERSONAL_TOKEN: ${{ secrets.HEXO_DEPLOY }} # secret 名，生成网址https://github.com/settings/tokens/new
+        PUBLISH_REPOSITORY: fydy/fydy.github.io # 公共仓库，格式：GitHub 用户名/仓库名
+        BRANCH: test # 部署分支
+        PUBLISH_DIR: ./public # 部署 public 目录下的文件
 ```
 
 if you want to make the workflow only triggers on push events to specific branches, you can like this: 
@@ -56,4 +50,3 @@ Below you'll find a description of what each option does.
 | `PUBLISH_REPOSITORY`  | The repository the action should deploy to. for example `theme-keep/site` | `env` |  | **Yes** |
 | `BRANCH`  | The branch the action should deploy to. for example `master` | `env` | `gh-pages` | **Yes** |
 | `PUBLISH_DIR`  | The folder the action should deploy. for example `./public`| `env` | `./public` | No |
-
